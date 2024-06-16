@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payoffgenerator
+  labels:
+    app: payoffgenerator
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payoffgenerator
+  template:
+    metadata:
+      labels:
+        app: payoffgenerator
+    spec:
+      containers:
+        - name: payoffgenerator
+          image: payoffgeneratoracr.azurecr.io/payoffgenerator:latest
+          ports:
+            - containerPort: 80
